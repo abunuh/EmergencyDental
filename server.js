@@ -13,6 +13,15 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// General rate limiting for all routes (prevents abuse of static file serving)
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 200, // limit each IP to 200 requests per window
+  standardHeaders: true,
+  legacyHeaders: false
+});
+app.use(generalLimiter);
+
 // Rate limiting for appointment endpoint
 const appointmentLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
