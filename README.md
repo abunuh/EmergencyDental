@@ -1,4 +1,9 @@
 # EmergencyDental
+
+[![Deploy to GitHub Pages](https://github.com/abunuh/EmergencyDental/actions/workflows/pages.yml/badge.svg)](https://github.com/abunuh/EmergencyDental/actions/workflows/pages.yml)
+
+**Live site:** https://abunuh.github.io/EmergencyDental/
+
 After Hours Emergency Dental Website — Emergency and after-hours dental care in Little Rock, AR.
 
 ## Tech Stack
@@ -33,7 +38,19 @@ If Twilio variables are not set the server still runs — appointment requests a
 
 ## Deployment
 
-### Deploy to Render (recommended — free tier available)
+### Deploy to GitHub Pages (static frontend — live immediately)
+
+The `public/` directory is automatically published to **GitHub Pages** on every push to `main` via the workflow in `.github/workflows/pages.yml`.
+
+**One-time setup:**
+1. Go to your repository **Settings → Pages**.
+2. Under **Build and deployment → Source**, select **GitHub Actions**.
+3. Push to `main` (or trigger the workflow manually) — the site will be live at:
+   **https://abunuh.github.io/EmergencyDental/**
+
+> **Note:** The GitHub Pages site serves the static frontend only. The appointment form will prompt callers to use the phone number when the backend API is not available. For full appointment-to-SMS functionality, deploy the Node.js server using one of the options below.
+
+### Deploy to Render (full Node.js app — recommended)
 
 1. Sign up or log in at [render.com](https://render.com).
 2. Click **New → Web Service** and connect your GitHub repository.
@@ -43,8 +60,9 @@ If Twilio variables are not set the server still runs — appointment requests a
 
 #### Auto-deploy on push
 
-Every push to the `main` branch automatically triggers a new deployment on Render via the GitHub Actions workflow (`.github/workflows/deploy.yml`).  
-To enable the deploy hook:
+Every push to the `main` branch automatically triggers a new deployment on Render via the GitHub Actions workflow (`.github/workflows/deploy.yml`).
+*(The static frontend is published to GitHub Pages by the separate `.github/workflows/pages.yml` workflow.)*  
+To enable the Render deploy hook:
 1. In the Render dashboard open your service → **Settings → Deploy Hook** and copy the URL.
 2. Add it as a GitHub Actions secret named `RENDER_DEPLOY_HOOK_URL` in your repo settings.
 

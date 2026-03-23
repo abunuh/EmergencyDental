@@ -28,6 +28,6 @@ jobs:
         run: node --check server.js
 
       - name: Trigger Render deployment
-        if: ${{ secrets.RENDER_DEPLOY_HOOK_URL != '' }}
+        if: secrets.RENDER_DEPLOY_HOOK_URL
         run: |
           curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
