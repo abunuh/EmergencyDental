@@ -1,7 +1,7 @@
 {
   "name": "emergency-dental",
   "version": "1.0.0",
-  "description": "Weekend & Emergency Dental website with appointment booking and SMS notifications",
+  "description": "Emergency Dental website with appointment booking and SMS notifications",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

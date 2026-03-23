@@ -42,7 +42,7 @@ app.post('/api/appointment', appointmentLimiter, async (req, res) => {
   }
 
   const smsBody = [
-    '🦷 NEW APPOINTMENT REQUEST - Weekend & Emergency Dental',
+    '🦷 NEW APPOINTMENT REQUEST - Emergency Dental',
     `Name: ${name}`,
     `Phone: ${phone}`,
     email ? `Email: ${email}` : null,
@@ -88,5 +88,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Weekend & Emergency Dental server running on http://localhost:${PORT}`);
+  console.log(`Emergency Dental server running on http://localhost:${PORT}`);
 });
